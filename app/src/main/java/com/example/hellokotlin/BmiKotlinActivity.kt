@@ -16,12 +16,18 @@ class BmiKotlinActivity : AppCompatActivity() {
         val txtResult = findViewById<EditText>(R.id.heightField)
 
         btnBmi.setOnClickListener {
-            val height = heightField.getText().toString().toDouble()
-            val weight = weightField.getText().toString().toDouble()
+            try {
+                val height = heightField.getText().toString().toDouble()
+                val weight = weightField.getText().toString().toDouble()
 
-            val bmi = weight / Math.pow(height / 100.0, 2.0)
+                val bmi = weight / Math.pow(height / 100.0, 2.0)
 
-            txtResult.setText("Your BMI = " + bmi)
+                txtResult.setText("Your BMI = " + bmi)
+            }
+            catch (e : Exception){
+                txtResult.setText("Input(s) missing")
+
+            }
 
         }
     }
